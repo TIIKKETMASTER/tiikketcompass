@@ -23,13 +23,81 @@
     <svg id="svgHeader" style="width: 100%;" viewBox="0 0 112 19">
         <text x="50%" y="15" class="svgHeader">TIIKKETcompass</text>
     </svg>
+
     
-<center><h2 class="title">Results</h2></center></br>
+    
+<center><h2 class="title">Test</h2></center></br>
+
+
+<h2>Closest Match : <span class="weight-300" id="ideology-label"></span></h2>
+
+    <center><br><br><br><br><br><br><button class="largebutton" onclick="location.href='index.html';" style="background-color: #2196f3;">Home</button></center> <br>
+	
+    
+    <script>
+
+        ideology = ""
+        ideodist = Infinity
+    for (var i = 0; i < ideologies.length; i++) {
+        dist = 0
+        dist += Math.abs(ideologies[i].stats.b1 - v1)*1
+        dist += Math.abs(ideologies[i].stats.b2 - v3)*1
+        dist += Math.abs(ideologies[i].stats.b3 - v5)*1
+        dist += Math.abs(ideologies[i].stats.b4 - v7)*1
+        dist += Math.abs(ideologies[i].stats.b5 - v9)*1
+        dist += Math.abs(ideologies[i].stats.b6 - v11)*1
+        dist += Math.abs(ideologies[i].stats.b7 - v13)*1
+        dist += Math.abs(ideologies[i].stats.b8 - v15)*1
+        if (dist < ideodist) {
+            ideology = ideologies[i].name
+            ideodist = dist
+            ideomatch = Math.round(100-100*(ideodist/400))
+        }
+    }
+    document.getElementById("ideology-label").innerHTML = ideology
+
+        </script>
+
+        
+    </body>
+    
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-99715444-7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-99715444-7');
+    </script>
+    <script type="application/javascript" src="javascript.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <title>TIIKKETcompass Results</title>
+    <link rel="icon" type="x-icon" href="assets/icon.png">
+    <link rel="shortcut icon" type="x-icon" href="assets/icon.png">
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
     <svg id="svgHeader" style="width: 100%;" viewBox="0 0 112 19">
+        <text x="50%" y="15" class="svgHeader">TIIKKETcompass</text>
+    </svg>
+    
+    <div class="resultscontainer">
+  <div class="compass"><svg id="svgHeader" style="width: 100%;" viewBox="0 0 112 19">
 		<text x="50%" y="15" class="svgHeader">Results</text>
 	</svg>
     <img src="assets/compass.png" id="banner"></canvas></br>
-    <p style="text-align:center;margin:-2px auto">Right-click to copy/download.</p><br><br><center>
+    <p style="text-align:center;margin:-2px auto">Right-click to copy/download.</p><br><br><center></div>
+  <div class="finaltally">
+<h2 class="title">Results</h2></br></div>
+</div>
+
+    
     <h1><span class="animated-emoji">👇</span> More Info <span class="animated-emoji-flip">👇</span></h1><br>
 
     <svg id="svgHeader" style="width: 100%;" viewBox="0 0 112 19">
@@ -41,7 +109,7 @@
     <p>-What square do <i>you</i> belong to?<br>
     -What do you believe differentiates you from others near your square?<br>
     -What questions do you believe didnt represent your ideology?<br>
-    -What questions do you believe are missing? <br><br>
+    -What questions do you believe are missing? <br><img src="assets/Centrist-yellow.webp" alt="file" style="width:24px; height:22px; vertical-align:middle;"><br>
     These are the general questions I will be asking. If you want to contribute, send me a text on discord (tiikketmaster).</p><br><br>
     <h2>More To Come</h2>
     
