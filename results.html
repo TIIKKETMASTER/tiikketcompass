@@ -9,6 +9,9 @@
         gtag('config', 'UA-99715444-7');
     </script>
     <script type="application/javascript" src="javascript.js"></script>
+<script type="application/javascript"
+        src="ideologies.js">
+</script>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
     <link href='style.css' rel='stylesheet' type='text/css'>
@@ -23,20 +26,40 @@
     <svg id="svgHeader" style="width: 100%;" viewBox="0 0 112 19">
         <text x="50%" y="15" class="svgHeader">TIIKKETcompass</text>
     </svg>
+
+    <div class="resultscontainer">
+  <div class="compass">
     
-<center><h2 class="title">Results</h2></center></br>
     <svg id="svgHeader" style="width: 100%;" viewBox="0 0 112 19">
 		<text x="50%" y="15" class="svgHeader">Results</text>
 	</svg>
     <img src="assets/compass.png" id="banner"></canvas></br>
     <p style="text-align:center;margin:-2px auto">Right-click to copy/download.</p><br><br><center>
-    <h1><span class="animated-emoji">👇</span> More Info <span class="animated-emoji-flip">👇</span></h1><br>
+        
+  </div>
+  <div class="finaltally">
+<br><br>
+    <p><div class="result" id="result">Calculating...</div></p><br>
+    
+    <div id="bars"></div><br>
+
+    <p><div class="result" id="leastResult">Calculating...</div></p><br>
+
+  </div>
+</div>
+    
+<center><h2 class="title">Results</h2></center></br>
+    
+        
+  
+
+    <h1><span class="animated-emoji">👇🏻</span> More Info <span class="animated-emoji-flip">👇🏻</span></h1><br>
 
     <svg id="svgHeader" style="width: 100%;" viewBox="0 0 112 19">
 		<text x="50%" y="15" class="svgHeader">Results</text>
 	</svg>
     <img src="assets/compass.png" id="banner2"></canvas>
-
+<center>
     <h2>Do You Want To Contribute?</h2><br><br>
     <p>-What square do <i>you</i> belong to?<br>
     -What do you believe differentiates you from others near your square?<br>
@@ -90,7 +113,7 @@
                 ctx.fillText("Prog / Con Axis (z): " + z_axis, 40, 1560)
                 ctx.textAlign="right"
                 ctx.font="60px Palentino"
-                ctx.fillText("version: beta 0.7.0", 1820, 1350)
+                ctx.fillText("version: beta 0.8.0", 1820, 1350)
                 ctx.fillText("tiikketmaster.github.io/", 1820, 1416)
                 ctx.fillText("TIIKKETcompass.github.io", 1820, 1488/*gem*/)
                 ctx.fillText("Taken on " + dateString + " " + timeString, 1820, 1563)
@@ -113,7 +136,7 @@
     
                 var dot = c.getContext("2d");
                 dot.beginPath();
-                dot.arc(0 + (1000 * (x_axis+10)/20), 1002 - (1002 * (y_axis + 10)/20), 25, 0, 2 * Math.PI);
+                dot.arc(0 + (1003 * (x_axis+10)/20), 1002 - (1002 * (y_axis + 10)/20), 25, 0, 2 * Math.PI);
                 dot.fillStyle = 'red';
                 dot.fill();
                 dot.stroke();
@@ -122,6 +145,112 @@
             }
             background.src = "./assets/6x6compass.png";
         }
+
+        //vvvv  Closest Ideology Match code -- Thanks, ChatGPT!!  vvvv
+
+// Example ideology list with values (right, auth, prog), each -10 to 10
+
+// Parse URL query parameters
+const params = new URLSearchParams(window.location.search);
+const right = parseFloat(params.get("right")) || 0;
+const auth  = parseFloat(params.get("auth")) || 0;
+const prog  = parseFloat(params.get("prog")) || 0;
+
+const inputValues = [right, auth, prog];
+
+// Euclidean distance calculator
+function distance(a, b) {
+  return Math.sqrt(
+    (a[0] - b[0]) ** 2 +
+    (a[1] - b[1]) ** 2 +
+    (a[2] - b[2]) ** 2
+  );
+}
+
+// Calculate distances for all ideologies
+let scoredIdeologies = ideologies.map(ideo => {
+  return {
+    name: ideo.name,
+    dist: distance(inputValues, ideo.values)
+  };
+});
+
+// Sort by closest match
+scoredIdeologies.sort((a, b) => a.dist - b.dist);
+
+// Take top 3 (1 best + 2 runner-ups)
+let topMatches = scoredIdeologies.slice(0, 4);
+
+// Build result string
+let resultText = `<strong>Closest Match:</strong> ${topMatches[0].name}`;
+if (topMatches.length > 1) {
+  resultText += `<br><span class="runnerup">2: ${topMatches[1].name}</span>`;
+}
+if (topMatches.length > 2) {
+  resultText += `<br><span class="runnerup">3: ${topMatches[2].name}</span>`;
+}
+if (topMatches.length > 3) {
+  resultText += `<br><span class="runnerup">4: ${topMatches[3].name}</span>`;
+}
+
+// Show result
+document.getElementById("result").innerHTML = resultText;
+
+// --- Add opposites ---
+let oppositeMatches = scoredIdeologies.slice().sort((a,b) => b.dist - a.dist).slice(0, 3);
+
+let oppositeText = `<strong>Furthest Matches:</strong>`;
+oppositeMatches.forEach((ideo, index) => {
+  oppositeText += `<br><span class="runnerup">${ideo.name}</span>`;
+});
+
+// Show opposites in a separate container
+document.getElementById("leastResult").innerHTML = oppositeText;
+
+
+
+const barsDiv = document.getElementById("bars");
+
+// Map short axis names to full labels
+const axisLabels = {
+  right: "Socio-Economic",
+  auth:  "Authority",
+  prog:  "Socio-Cultural"
+};
+
+const axes = { right, auth, prog };
+
+for (const key in axes) {
+  const value = axes[key];
+  const percent = ((value + 10) / 20) * 100;
+
+  const container = document.createElement("div");
+  container.className = "bar-container";
+
+  const label = document.createElement("div");
+  label.className = "bar-label";
+  label.textContent = `${axisLabels[key]}`;
+
+  // Each bar has a unique ID
+  const bar = document.createElement("div");
+  bar.className = "bar";
+  bar.id = `bar-${key}`;
+
+  // Each fill has a unique ID
+  const fill = document.createElement("div");
+  fill.className = "bar-fill";
+  fill.id = `fill-${key}`;
+  fill.style.width = `${percent}%`;
+
+  bar.appendChild(fill);
+  container.appendChild(label);
+  container.appendChild(bar);
+  barsDiv.appendChild(container);
+}
+
+
+
+
 
         
         </script>

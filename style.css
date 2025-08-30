@@ -66,6 +66,7 @@ body {
     padding: 2em;
     background-color: #1d1d1d;
     border-color: #000000;
+    color: #eeeeee;
     border-left-style: solid;
     border-right-style: solid;
     border-width: 15px;
@@ -372,7 +373,6 @@ span.weight-300 {
     border-color: #181818;
     border-style: solid;
     border-width: 4px;
-    border-radius: 20pt;
     display: block;
     margin: 8pt;
     margin-left: auto;
@@ -385,7 +385,6 @@ span.weight-300 {
     border-color: #181818;
     border-style: solid;
     border-width: 4px;
-    border-radius: 20pt;
     display: block;
     margin: 8pt;
     margin-left: auto;
@@ -563,8 +562,8 @@ div.credright{
 .animated-emoji-flip {
   display: inline-block; 
   transform-origin: center bottom;
-  transform: scaleY(-1);
-  animation: bounce 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  transform: scaleX(-1);
+  animation: bounce-flip 1s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
 @keyframes bounce {
@@ -574,6 +573,52 @@ div.credright{
   80% {
     transform: translateY(-15px);
   }
+}
+
+@keyframes bounce-flip {
+  0%, 100% {
+    transform: translateY(0) scaleX(-1);
+  }
+  80% {
+    transform: translateY(-15px) scaleX(-1);
+  }
+}
+
+/*bouce left & right*/
+
+.emoji-bounce-left {
+  display: inline-block; 
+  transform-origin: left;
+  animation: bounce 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.emoji-bounce-right {
+  display: inline-block; 
+  transform-origin: left;
+  animation: bounce 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes bounce-left {
+    0%,
+    100% {
+        transform: translateY(-25%);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+        transform: translateY(0%);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+}
+
+@keyframes bounce-right {
+    0%,
+    100% {
+        transform: translateX(25%);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+        transform: translateX(0);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
 }
 
 
@@ -656,19 +701,70 @@ div.credright{
   }
 
   .compass {
-    flex: 2;                 /* Takes only the space it needs */
+    flex: 2;
     padding: 10px;
   }
 
   .finaltally {
-    flex: 1;                 /* Takes the remaining space */
+    flex: 1;
     padding: 10px;
-    text-align: left;
+    text-align: center;
   }
 
-  .compass {
+  .result {
+    color: #eeeeee;
+    font: 'Palentino';
+    font-size: 23pt;
+    line-height: 1.5;
+    margin: 4pt;
+  text-align: left;
+    }
 
-  }
-  .finaltally {
+.runnerup {
+    color: #ccc;
+    font: 'Palentino';
+    font-size: 18pt;
+    line-height: 1.5;
+    margin: 4pt;
+  text-align: left;
+}
 
+
+
+.bar-container {
+    margin: 8px 0;
   }
+
+  .bar-label {
+    margin-bottom: 2px;
+    color: #ccc;
+    font: 'Palentino';
+    font-size: 18pt;
+  }
+
+  .bar {
+    height: 23px;
+    background: #444;         /* background "empty" bar */
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    background: #4caf50;      /* filled portion color */
+    width: 0;
+    transition: width 2s ease-in-out;
+  }
+
+  #bar-right { background-color: #864800; 
+  display: flex;
+  flex-direction: row-reverse;}
+#fill-right { background-color: #009790; }
+
+#bar-auth { background-color: #b4b100; 
+  display: flex;
+  flex-direction: row-reverse;}
+#fill-auth { background-color: #a70000; }
+
+#bar-prog { background-color: #329623; }
+#fill-prog { background-color: #841d9e; }
