@@ -1,5 +1,5 @@
 questions =  [
-    {"id": 14, "question": "Identification and surveillance techniques should be used to ensure public safety.", "effects": {"auth": 1}},
+    {"id": 14, "question": "Identification and surveillance techniques should be used to ensure public safety.", "effects": {"auth": 1, "prog":0,"right":0}},
     {"id": 15, "question": "The government should have the authority to regulate or influence any interactions between two or more consenting parties.", "effects": {"auth": 1}},
     {"id": 16, "question": "The government should be used to incentivize people towards or away from certain actions.", "effects": {"auth": 1}},
     {"id": 17, "question": "It is the government's responsibility to enforce morality.", "effects": {"auth": 1}},

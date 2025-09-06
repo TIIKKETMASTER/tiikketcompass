@@ -1,5 +1,5 @@
 questions = [
-    {"id": 26, "question": "The concept of society and social norms should be abolished entirely.", "effects": {"prog": 1}},
+    {"id": 26, "question": "The concept of society and social norms should be abolished entirely.", "effects": {"prog": 1, "auth":0,"right":0}},
     {"id": 27, "question": "Tradition is antithetical to reason.", "effects": {"prog": 1}},
     {"id": 28, "question": "Gender-and-sexuality-nonconforming individuals should be accepted for who they are.", "effects": {"prog": 1}},
     {"id": 29, "question": "Sexual deviancy is perfectly fine.", "effects": {"prog": 1}},

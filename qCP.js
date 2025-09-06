@@ -1,5 +1,5 @@
 questions = [
-    {"id": 0, "question": "Cities, towns, and large plots of land should be privately owned and be made solely for the interests of its owners.", "effects": {"right": 1}},
+    {"id": 0, "question": "Cities, towns, and large plots of land should be privately owned and be made solely for the interests of its owners.", "effects": {"right": 1, "prog":0,"auth":0}},
     {"id": 1, "question": "The market economy is the most efficient and/or ethical means of producing and distributing goods and services.", "effects": {"right": 1}},
     {"id": 2, "question": "Regulations on goods and services are detrimental to the economy and to private property.", "effects": {"right": 1}},
     {"id": 3, "question": "Taxation or wealth distribution based on income, trade or property is not ideal and should be lowered or abolished entirely.", "effects": {"right": 1}},
