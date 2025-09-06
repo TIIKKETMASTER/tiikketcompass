@@ -768,3 +768,15 @@ div.credright{
 
 #bar-prog { background-color: #329623; }
 #fill-prog { background-color: #841d9e; }
+
+.extLink {
+  height: 4vw;
+  width: 4vw;
+  cursor: pointer;
+  border-radius: 100%;
+  transition: .25s ease-in-out;
+}
+
+.extLink:hover {
+  scale:1.15
+}
