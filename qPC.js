@@ -2,7 +2,7 @@ questions = [
     {"id": 26, "question": "The concept of society and social norms should be abolished entirely.", "effects": {"prog": 1, "auth":0,"right":0}},
     {"id": 27, "question": "Tradition is antithetical to reason.", "effects": {"prog": 1}},
     {"id": 28, "question": "Gender-and-sexuality-nonconforming individuals should be accepted for who they are.", "effects": {"prog": 1}},
-    {"id": 29, "question": "Sexual deviancy is perfectly fine.", "effects": {"prog": 1}},
+    {"id": 29, "question": "Sexual deviancy in the land is perfectly fine.", "effects": {"prog": 1}},
     {"id": 30, "question": "People shouldn't be treated harshly solely because of some immutable characteristics.", "effects": {"prog": 1}},
     {"id": 31, "question": "Those of different status or ability should still be treated with respect.", "effects": {"prog": 1}},
     {"id": 32, "question": "Cultural adaptation to foreign ideas and values is necessary for societies to thrive in the modern world.", "effects": {"prog": 1}},
