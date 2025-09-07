@@ -362,7 +362,7 @@ const ideologies = [
   { name: "Paleoconservatism", values: [7, 5, 0],
     description: "Description work in progress"
   },
-  { name: "American Confederatism", values: [9, 5, 0],
+  { name: "Mercantilism", values: [9, 5, 0],
     description: "Description work in progress"
   },
   { name: "Monarchist Capitalism", values: [7, 3, 0],
