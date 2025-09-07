@@ -632,7 +632,7 @@ div.credright{
 }
 
 
-  @media only screen and (max-width: 968px) {
+  @media only screen and (max-width: 960px) {
 	body {
 		width: auto !important;
 		border-width: 0px !important;  
@@ -703,6 +703,11 @@ div.credright{
 
 }
 
+.resultscontainer .compass,
+.resultscontainer .finaltally {
+  box-sizing: border-box;
+}
+
 #userdropdown {
     display: flex;
     font-size: 22pt;
@@ -720,6 +725,9 @@ div.credright{
 
   .resultscontainer {
     display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    flex-wrap: nowrap;
   }
 
   .compass {
