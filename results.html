@@ -27,6 +27,8 @@
         <text x="50%" y="15" class="svgHeader">TIIKKETcompass</text>
     </svg>
 
+    <center><img src="assets/texts/resultTitle.png"><br></center>
+
     <div class="resultscontainer">
   <div class="compass">
     
@@ -48,11 +50,11 @@
   </div>
 </div>
     
-<center><h2 class="title">Results</h2></center></br>
-    
+<center>
         
+<div id="ideology-info" class="ideology-info"></div></center>
   
-
+<br>
     <h1><span class="animated-emoji">👇🏻</span> More Info <span class="animated-emoji-flip">👇🏻</span></h1><br>
 
     <svg id="svgHeader" style="width: 100%;" viewBox="0 0 112 19">
@@ -114,8 +116,10 @@
                 ctx.textAlign="right"
                 ctx.font="60px Palentino"
                 ctx.fillText("version: beta 0.8.5", 1820, 1350)
+                ctx.fillStyle="#6b5fae"
                 ctx.fillText("tiikketmaster.github.io/", 1820, 1416)
-                ctx.fillText("TIIKKETcompass.github.io", 1820, 1488/*gem*/)
+                ctx.fillText("TIIKKETcompass/", 1820, 1488/*gem*/)
+                ctx.fillStyle="#7f7f7f"
                 ctx.fillText("Taken on " + dateString + " " + timeString, 1820, 1563)
     
                 document.getElementById("banner").src = c.toDataURL();
@@ -195,6 +199,15 @@ if (topMatches.length > 3) {
 
 // Show result
 document.getElementById("result").innerHTML = resultText;
+
+let closestIdeo = ideologies.find(ideo => ideo.name === topMatches[0].name);
+
+if (closestIdeo) {
+  document.getElementById("ideology-info").innerHTML = `
+    <h3>${closestIdeo.name}</h3>
+    <p>${closestIdeo.description}</p>
+  `;
+}
 
 // --- Add opposites ---
 let oppositeMatches = scoredIdeologies.slice().sort((a,b) => b.dist - a.dist).slice(0, 3);
