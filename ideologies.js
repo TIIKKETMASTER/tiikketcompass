@@ -183,7 +183,7 @@ const ideologies = [
   { name: "Minarcho-Capitalism", values: [7, -7, 0],
     description: "Description work in progress"
   },
-  { name: "Randian Minarchism", values: [7, -9, 0],
+  { name: "Randian Minarchism", values: [9, -7, 0],
     description: "Description work in progress"
   },
   { name: "Left-Rothbardianism", values: [7, -9, 0],
@@ -265,7 +265,7 @@ const ideologies = [
   { name: "Paetelism", values: [-9, 7, 0],
     description: "Karl Otto Paetel’s personal beliefs, attempting to reconcile revolutionary nationalism and Marxism to counter capitalism"
   },
-  { name: "Niekischism", values: [-7, 7, 0],
+  { name: "Strasserism", values: [-7, 7, 0],
     description: "Description work in progress"
   },
 
